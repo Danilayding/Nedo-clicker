@@ -1,7 +1,6 @@
 extends Node2D
 
-func _on_Button_pressed():
-	$Timer.start()
-	
-func _on_Timer_timeout():
-	print('чмо ебаное блять сука нахуй')
+func on_Score_Changed():
+	var scene = preload('res://Giga_Chad.tscn')
+	var child = scene.instance() 
+	self.add_child(child)

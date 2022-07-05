@@ -6,6 +6,11 @@
 [ext_resource path="res://impact2.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://аый (2).png" type="BitMap" id=5]
 [ext_resource path="res://30_.mp3" type="AudioStream" id=6]
+[ext_resource path="res://Node2D.gd" type="Script" id=7]
+[ext_resource path="res://kursor.png" type="Texture" id=8]
+[ext_resource path="res://MarketAuto.gd" type="Script" id=9]
+[ext_resource path="res://MarketClick.gd" type="Script" id=10]
+[ext_resource path="res://Button.tscn" type="PackedScene" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -21,25 +26,11 @@ bg_color = Color( 0.192157, 0.243137, 0.827451, 1 )
 [sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.929412, 0.0117647, 0.0117647, 1 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 22
-font_data = ExtResource( 4 )
-
-[sub_resource type="StyleBoxFlat" id=5]
-
-[sub_resource type="DynamicFont" id=6]
-size = 22
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=7]
-size = 22
-font_data = ExtResource( 4 )
-
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource( 7 )
 
 [node name="MainBut" type="TextureButton" parent="."]
 margin_left = 214.0
@@ -80,108 +71,57 @@ custom_styles/normal = SubResource( 9 )
 align = 1
 valign = 1
 
-[node name="MarketAuto" type="Label" parent="."]
+[node name="MarketAuto" type="ColorRect" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -390.0
-margin_top = -302.0
-margin_right = 2.0
-margin_bottom = -4.0
+margin_left = -84.0
+margin_top = -301.0
+margin_right = 330.999
+margin_bottom = -3.0
 rect_scale = Vector2( 1.00072, 1 )
-custom_styles/normal = SubResource( 3 )
+rect_pivot_offset = Vector2( 192.861, 109 )
+color = Color( 0.890196, 0.101961, 0.101961, 1 )
+script = ExtResource( 9 )
 
-[node name="UpgradeAuto1" type="Button" parent="MarketAuto"]
-margin_left = 73.9468
-margin_top = 234.0
-margin_right = 330.947
-margin_bottom = 268.0
-custom_fonts/font = SubResource( 4 )
-text = "Пассивный доход + 1 = 50"
+[node name="Tween" type="Tween" parent="MarketAuto"]
 
-[node name="UpgradeAuto2" type="Button" parent="MarketAuto"]
-margin_left = 68.9504
-margin_top = 179.0
-margin_right = 345.95
-margin_bottom = 213.0
-custom_fonts/font = SubResource( 4 )
-text = "Пассивный доход + 10 = 100"
+[node name="Button" parent="MarketAuto" instance=ExtResource( 11 )]
+margin_left = 83.9396
+margin_top = 39.0
+margin_right = 355.94
+margin_bottom = 71.0
+cost = 50
+effect = 1
 
-[node name="UpgradeAuto3" type="Button" parent="MarketAuto"]
-margin_left = 69.9497
-margin_top = 126.0
-margin_right = 353.95
-margin_bottom = 160.0
-custom_fonts/font = SubResource( 4 )
-text = "Пассивный доход + 25 = 300"
-
-[node name="UpgradeAuto4" type="Button" parent="MarketAuto"]
-margin_left = 64.9533
-margin_top = 66.0
-margin_right = 357.953
-margin_bottom = 100.0
-custom_fonts/font = SubResource( 4 )
-text = "Пассивный доход + 100 = 500"
-
-[node name="UpgradeAuto5" type="Button" parent="MarketAuto"]
-margin_left = 57.9583
-margin_top = 18.0
-margin_right = 366.958
-margin_bottom = 52.0
-rect_scale = Vector2( 0.995443, 1 )
-custom_fonts/font = SubResource( 4 )
-text = "Пассивный доход + 500 = 5000"
-
-[node name="MarketClick" type="Label" parent="."]
+[node name="MarketClick" type="ColorRect" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -389.0
-margin_top = -2.0
-margin_right = 3.0
-margin_bottom = 296.0
-custom_styles/normal = SubResource( 5 )
+margin_left = -84.0
+margin_right = 331.0
+margin_bottom = 298.0
+color = Color( 0.0156863, 0.121569, 1, 1 )
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="UpgradeClick1" type="Button" parent="MarketClick"]
-margin_left = 98.0
-margin_top = 237.0
-margin_right = 319.0
-margin_bottom = 271.0
-custom_fonts/font = SubResource( 6 )
-text = "Бонус от клика + 1 = 10"
+[node name="Button2" parent="MarketClick" instance=ExtResource( 11 )]
+margin_left = 82.0
+margin_top = 37.0
+margin_right = 354.0
+margin_bottom = 69.0
+type = 1
+cost = 10
+effect = 1
 
-[node name="UpgradeClick2" type="Button" parent="MarketClick"]
-margin_left = 92.0
-margin_top = 181.0
-margin_right = 329.0
-margin_bottom = 215.0
-rect_pivot_offset = Vector2( -395, 302 )
-custom_fonts/font = SubResource( 7 )
-text = "Бонус от клика + 10 = 50"
+[node name="Kursor" type="Sprite" parent="MarketClick"]
+position = Vector2( 41.1971, 145 )
+scale = Vector2( 0.127976, 0.127976 )
+texture = ExtResource( 8 )
 
-[node name="UpgradeClick3" type="Button" parent="MarketClick"]
-margin_left = 88.0
-margin_top = 123.0
-margin_right = 336.0
-margin_bottom = 157.0
-custom_fonts/font = SubResource( 6 )
-text = "Бонус от клика + 25 = 100"
-
-[node name="UpgradeClick4" type="Button" parent="MarketClick"]
-margin_left = 85.0
-margin_top = 70.0
-margin_right = 346.0
-margin_bottom = 104.0
-custom_fonts/font = SubResource( 6 )
-text = "Бонус от клика + 100 = 300"
-
-[node name="UpgradeClick5" type="Button" parent="MarketClick"]
-margin_left = 75.0
-margin_top = 18.0
-margin_right = 348.0
-margin_bottom = 52.0
-custom_fonts/font = SubResource( 6 )
-text = "Бонус от клика + 500 = 1000"
+[node name="Tween" type="Tween" parent="MarketClick"]
 
 [node name="HUI" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
@@ -189,15 +129,11 @@ volume_db = -13.0
 
 [node name="Timer" type="Timer" parent="."]
 
+[connection signal="Score_Changed" from="." to="Node2D" method="on_Score_Changed"]
 [connection signal="pressed" from="MainBut" to="." method="_on_MainBut_pressed"]
-[connection signal="pressed" from="MarketAuto/UpgradeAuto1" to="." method="_on_UpgradeAuto1_pressed"]
-[connection signal="pressed" from="MarketAuto/UpgradeAuto2" to="." method="_on_UpgradeAuto2_pressed"]
-[connection signal="pressed" from="MarketAuto/UpgradeAuto3" to="." method="_on_UpgradeAuto3_pressed"]
-[connection signal="pressed" from="MarketAuto/UpgradeAuto4" to="." method="_on_UpgradeAuto4_pressed"]
-[connection signal="pressed" from="MarketAuto/UpgradeAuto5" to="." method="_on_UpgradeAuto5_pressed"]
-[connection signal="pressed" from="MarketClick/UpgradeClick1" to="." method="_on_UpgradeClick1_pressed"]
-[connection signal="pressed" from="MarketClick/UpgradeClick2" to="." method="_on_UpgradeClick2_pressed"]
-[connection signal="pressed" from="MarketClick/UpgradeClick3" to="." method="_on_UpgradeClick3_pressed"]
-[connection signal="pressed" from="MarketClick/UpgradeClick4" to="." method="_on_UpgradeClick4_pressed"]
-[connection signal="pressed" from="MarketClick/UpgradeClick5" to="." method="_on_UpgradeClick5_pressed"]
+[connection signal="pressed" from="MainBut" to="Node2D" method="_on_MainBut_pressed"]
+[connection signal="mouse_entered" from="MarketAuto" to="MarketAuto" method="_on_MarketAuto_mouse_entered"]
+[connection signal="mouse_exited" from="MarketAuto" to="MarketAuto" method="_on_MarketAuto_mouse_exited"]
+[connection signal="mouse_entered" from="MarketClick" to="MarketClick" method="_on_MarketClick_mouse_entered"]
+[connection signal="mouse_exited" from="MarketClick" to="MarketClick" method="_on_MarketClick_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
