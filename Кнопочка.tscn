@@ -134,6 +134,8 @@ volume_db = -13.0
 [connection signal="pressed" from="MainBut" to="Node2D" method="_on_MainBut_pressed"]
 [connection signal="mouse_entered" from="MarketAuto" to="MarketAuto" method="_on_MarketAuto_mouse_entered"]
 [connection signal="mouse_exited" from="MarketAuto" to="MarketAuto" method="_on_MarketAuto_mouse_exited"]
+[connection signal="Pokupka" from="MarketAuto/Button" to="." method="on_Pokupka"]
 [connection signal="mouse_entered" from="MarketClick" to="MarketClick" method="_on_MarketClick_mouse_entered"]
 [connection signal="mouse_exited" from="MarketClick" to="MarketClick" method="_on_MarketClick_mouse_exited"]
+[connection signal="Pokupka" from="MarketClick/Button2" to="." method="on_Pokupka"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

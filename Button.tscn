@@ -8,3 +8,5 @@ margin_top = 171.0
 margin_right = 1002.0
 margin_bottom = 203.0
 script = ExtResource( 1 )
+
+[connection signal="pressed" from="." to="." method="_on_button_pressed"]
